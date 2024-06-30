@@ -1,17 +1,12 @@
 // Import necessary modules
 const express = require('express');
+const router = express.Router();  // Corrected this line
+
 const authController = require('../controllers/authController');
-const { registerValidator } = require('../helpers/validator');
 
-// Create a router instance
-const router = express.Router();
-
-// Define routes
-router.get('/login', (req, res) => {
-  res.send('Login Page');
-});
+const {registerValidator, loginValidator} = require('../helpers/validator');
 
 router.post('/register', registerValidator, authController.registerUser);
+router.post('/login', loginValidator, authController.loginUser);
 
-// Export the router
 module.exports = router;

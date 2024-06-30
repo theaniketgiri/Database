@@ -1,7 +1,12 @@
-const {check} = require('express-validator');
+const { check } = require('express-validator');
 
-exports.registerValidator = () => [
+exports.registerValidator = [
     check('name', 'Name is required').notEmpty(),
     check('email', 'Email is required').isEmail(),
-    check('password', 'Password is required').isLength({min: 6})
+    check('password', 'Password is required').isLength({ min: 6 })
 ]; 
+
+exports.loginValidator = [
+    check('email', 'Email is required').isEmail(),
+    check('password', 'Password is required').isLength({ min: 6 })
+];
